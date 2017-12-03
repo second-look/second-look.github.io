@@ -92,3 +92,9 @@ body {
     background-color: #56504f;
   }
 }
+
+/*a:link, a:visited{*/
+#demo  {
+    color: (internal value);
+    font-size: 150%;
+}
