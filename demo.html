@@ -4,6 +4,7 @@
     <title>Second Look </title>
     <link rel="stylesheet" type="text/css" href="starter-template.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge"; charset=UTF-8">
+    <script src="https://d3js.org/d3.v4.min.js"></script>
 
 
 </head>
@@ -12,7 +13,13 @@
   <h1 style="text-align:center;">Second Look</h1>
 </div>
 
+
+<p>Canvas:</p>
+
+<canvas id="myCanvas" width="5000" height="5000" style="border:1px solid #d3d3d3;" > Your browser does not support the HTML5 canvas tag. </canvas>
+
 <script type='text/javascript'>
+
 
 function main()
 {
@@ -21,15 +28,25 @@ function main()
     inputFileToLoad.id = "inputFileToLoad";
     document.body.appendChild(inputFileToLoad);
 
+    
+
     var buttonLoadFile = document.createElement("button");
     buttonLoadFile.onclick = loadImageFileAsURL;
     buttonLoadFile.textContent = "Load Selected File";
     document.body.appendChild(buttonLoadFile);
+
+    
+    
+
 }
+
+
 
 function loadImageFileAsURL()
 {
     var filesSelected = document.getElementById("inputFileToLoad").files;
+    var canvas = document.getElementById("myCanvas");
+    var ctx = canvas.getContext("2d");
     if (filesSelected.length > 0)
     {
         var fileToLoad = filesSelected[0];
@@ -41,7 +58,7 @@ function loadImageFileAsURL()
             {
                 var imageLoaded = document.createElement("img");
                 imageLoaded.src = fileLoadedEvent.target.result;
-                document.body.appendChild(imageLoaded);
+                ctx.drawImage(imageLoaded,10,10);
             };
             fileReader.readAsDataURL(fileToLoad);
         }
