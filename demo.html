@@ -13,6 +13,14 @@
   <h1 style="text-align:center;">Second Look</h1>
 </div>
 
+<div class='Input'>
+    <input id="play" type="file" value="Play" onclick="loadImageFileAsURLTest();" />
+</div>
+<p> </p>
+
+<div class='Load'>
+    <input id="load" type="button" value="Load File" onclick="loadImageFileAsURLTest();" />
+</div>
 
 <p>Canvas:</p>
 
@@ -41,6 +49,28 @@ function main()
 
 }
 
+function loadImageFileAsURLTest()
+{
+    var filesSelected = document.getElementById("play").files;
+    var canvas = document.getElementById("myCanvas");
+    var ctx = canvas.getContext("2d");
+    if (filesSelected.length > 0)
+    {
+        var fileToLoad = filesSelected[0];
+
+        if (fileToLoad.type.match("image.*"))
+        {
+            var fileReader = new FileReader();
+            fileReader.onload = function(fileLoadedEvent) 
+            {
+                var imageLoaded = document.createElement("img");
+                imageLoaded.src = fileLoadedEvent.target.result;
+                ctx.drawImage(imageLoaded,0,0);
+            };
+            fileReader.readAsDataURL(fileToLoad);
+        }
+    }
+}
 
 
 function loadImageFileAsURL()
@@ -66,7 +96,7 @@ function loadImageFileAsURL()
     }
 }
 
-main();
+
 
 </script>
 

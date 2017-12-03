@@ -104,3 +104,8 @@ body {
   height: auto;
  
 }
+
+#play {
+  color: #FF;
+  font-weight: bold;
+}
