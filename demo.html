@@ -16,6 +16,7 @@
 
 <p>Canvas:</p>
 
+
 <canvas id="myCanvas" width="5000" height="5000" style="border:1px solid #d3d3d3;" > Your browser does not support the HTML5 canvas tag. </canvas>
 
 <script type='text/javascript'>
@@ -58,7 +59,7 @@ function loadImageFileAsURL()
             {
                 var imageLoaded = document.createElement("img");
                 imageLoaded.src = fileLoadedEvent.target.result;
-                ctx.drawImage(imageLoaded,10,10);
+                ctx.drawImage(imageLoaded,0,0);
             };
             fileReader.readAsDataURL(fileToLoad);
         }
