@@ -261,12 +261,34 @@
             <div class="page-header">
                 <h2>Problem</h2>
             </div>
-            <ul>
-              <li>1.7 million new breast cancer cases are diagnosed annually.  In the US, 1 in 8 women will be diagnosed with breast cancer in her lifetime.</li>
-              <li>It is estimated that worldwide over 508 000 women died in 2011 due to breast cancer (Global Health Estimates, WHO 2013).</li>
-              <li>Although breast cancer is thought to be a disease of the developed world, almost 50% of breast cancer cases and 58% of deaths occur in less developed countries (GLOBOCAN 2008).</li>
-              <li>Mammogram detection has a 15.6% false negative rate, translating to 300k undetected cases every year.</li>
-            </ul>
+              <p>Breast cancer is the most prevalent type of cancer among women across the world. In 2012, 1.677 million new breast cancer cases were diagnosed worldwide and they represented 25.2% of all cancer cases in women [1]. In 2011, 508,000 women died due to breast cancer [2]. In the United States alone, there are an estimated 316,120 new cases of breast cancer and 40,610 deaths in 2017 [3].</p>
+              <p>In the United States, breast cancer incidence rates increased by 10-50% across various ethnicities during 1975-2014 [4]. However, during the same period, breast cancer mortality rates decreased by 5-30% across various ethnicities [5].
+              Early detection of breast cancers leading to early treatment has contributed to reduction in breast cancer mortality rates [6]. Screening mammography is one of the most common tools used for early detection of breast cancers. Screening mammography has become significantly more commonplace in the United States during last 30 years (1987-2017) [7]. However, screening mammography has a sensitivity of 84.4% [8]. This means that 15.6% of the breast cancer cases remain undetected.</p>
+
+              <center>
+                       <img src="Breast Density.png" class="img-responsive img-square" style="width: 515px; height: 180px">
+                       <p><b>Figure 1:</b> Breast density in mammograms</p>
+                       <p> <b>Source:</b><a href = "https://ww5.komen.org/Breastcancer/Highbreastdensityonmammogram.html" target="_blank"> 
+                        Susan G. Komen Foundation </a></p>
+            </center>
+
+            <p>As seen in the figure 1, fatty tissue appears darker on a mammogram and fibroglandular tissue appears light gray or white on a mammogram. Breast tumor also appears light gray or white on a mammogram.</p>
+
+            <center>
+                       <img src="Breast Density 1.png" class="img-responsive img-square" style="width: 515px; height: 220px">
+                       <p><b>Figure 2:</b> Breast tumor in fatty and dense breast/p>
+                       <p> <b>Source:</b><a href = "https://www.today.com/health/do-you-have-dense-breasts-you-may-need-more-mammogram-t104102" target="_blank"> 
+                        Do you need extra screening for breast cancer? </a></p>
+            </center>
+            <p>As seen in the figure 2, detecting breast tumor in dense tissue is difficult compared to detecting breast tumor in the fatty tissue.</p>
+
+
+            <p>Sensitivity of breast tumor detection in almost entirely fatty breast was 87%, while in extremely dense breasts was only 62.9% [9]. Women with dense breasts have a higher risk of developing breast cancer [10]. This combination of higher cancer risk with lower detection rates is concerning for women with dense breasts.</p>
+
+            <p>In addition, not only considerable differences were observed in the interpretation of same mammograms by several radiologists; but also, differences were observed in the interpretation of same mammograms by the same radiologist [11]. So using multiple radiologists to improve the breast cancer detection accuracy is time consuming and costly; yet, may not improve outcomes in some of the cases.</p>
+
+            <p>A software tool that would detect breast tumors more accurately and more consistently would be beneficial to radiologists. Further, recent advances in deep learning algorithms for image classification, object localization, object recognition, semantic segmentation and instance segmentation make them attractive candidates for development of the software tool for breast cancer detection in mammograms.</p>
+
 
         </div>
 
@@ -290,7 +312,7 @@
             </div>
             <h3> Background on Mask R-CNN </h3>
 
-            <p> He et al. created Mask R-CNN by extending Faster R-CNN by adding a branch for predicting class-specific object mask for Instance Segmentation in parallel with the existing object classifier and bounding box regressor [25].
+            <p> He et al. created <a href = "https://arxiv.org/pdf/1703.06870.pdf" target="_blank"> Mask R-CNN </a> by extending Faster R-CNN by adding a branch for predicting class-specific object mask for Instance Segmentation in parallel with the existing object classifier and bounding box regressor .
             <div>
             <center>
                        <img src="Mask RCNN.png" class="img-responsive img-square" style="width: 600px; height: 300px">
@@ -299,8 +321,10 @@
             </center>
             </div>
 
-
-
+ 
+            Mask R-CNN has two main features on top of Faster R-CNN
+            <li>RoiPooling is changed to RoiAlign</li>
+            <li>It achives pixel-level segmentation by adding a branch to Faster R-CNN that outputs a binary mask for each class. The branch is achieved by using a Fully Convolutional Network on top of a CNN based feature map. </li>
             RoIPooling layer of Faster R-CNN is replaced by RoIAlign layer which uses bilinear interpolation to calculate a segmentation mask at a pixel by pixel level.
             </p>
             <div>
