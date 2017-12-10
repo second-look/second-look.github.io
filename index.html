@@ -355,11 +355,30 @@
                 The CBIS-DDSM Mass-Test (5292 cases) dataset has image sizes varying from 2000 x 2000 to 5000 x 5000 pixels. The mini-MIAS test (1327 cases) dataset has all images with size 1024 x 1024 pixels.
                 846,720 256 x 256 pixel patches were extracted from the CBIS-DDSM Mass-Test (5292 cases) images. 21,952 patches were extracted from the mini-MIAS training (1372 cases) images. We used all of those patches for testing. </p>
 
-            <h3>Data Imbalance and Sampling</h3>
-            <p>Text</p>
+            <h3>Network Architecture</h3>
+            <p>We derived our Mask R-CNN architecture based on the Functional Pyramid Network (FPN) [27] variant of Mask R- CNN.</p>
+            <p>Feature Pyramid Network extracts features at different scales based on their levels in the feature pyramid. The ResNet [28] – FPN [27] backbone provides good accuracy without sacrificing speed.</p>
+            <p>Our Mask R-CNN architecture leverages and extends the framework of Abdullah et al. at Matterport [29]. Our Mask R- CNN model has – 63,744,170 total parameters, 63,632,682 trainable parameters and 111,488 non-trainable parameters.</p>
 
-            <h3>Training a CNN</h3>
-            <p>Text</p>
+            <h3>Training & Testing</h3>
+            <p>We used Google Cloud Platform virtual machines for training and testing. Our virtual machine environment had following specifications:
+                1. Zone: us-west1-b
+                2. Machine type: n1-standard-4
+                3. CPUs: 4 vCPUs (unknown CPU platform)
+                4. CPU RAM: 15 GB
+                5. GPU: 1 Nvidia Tesla K80 (half board)
+                6. GPU RAM: 12 GB
+                7. HDD: 1 TB persistent storage
+                8. OS: Ubuntu 16.04.3 LTS
+                9. Nvidia CUDA: CUDA 8.0.61
+                10. Nvidia cuDNN: cuDNN 6.0.21
+                11. Google Tensorflow: TensorFlow 1.3.0
+                12. Keras: Keras 2.0.8
+                13. OpenCV: OpenCV 3.3.0
+                14. Jupyter Notebook: Jupyter Notebook 5.1.0
+                On Google Cloud Platform, Tesla P100 GPUs cost 3 times Tesla K80 GPUs. However, while using Tesla P100 GPUs, we noticed just 30-40% performance increase over Tesla K89 GPUs. Hence, we used K80 GPUs for bulk of our training and testing activities as they had a better performance/price ratio.
+                We used Mask-RCNN pretrained on COCO dataset [30].
+                We observed that the Mask-RCNN requires a large amount of memory and hence we could only train 2 images in a batch per GPU in the available environment reliably without experiencing memory errors. This small batch size was equivalent to stochastic training instead of a mini-batch training. To maintain the network stability we were forced to use a lower learning rate of 0.002 which we had reduce in later epochs to 0.0002.</p>
 
             <h3>Postprocessing and Final Predictions</h3>
             <p>Text</p>
