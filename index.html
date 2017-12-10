@@ -361,24 +361,25 @@
             <p>Our Mask R-CNN architecture leverages and extends the framework of Abdullah et al. at Matterport [29]. Our Mask R- CNN model has – 63,744,170 total parameters, 63,632,682 trainable parameters and 111,488 non-trainable parameters.</p>
 
             <h3>Training & Testing</h3>
-            <p>We used Google Cloud Platform virtual machines for training and testing. Our virtual machine environment had following specifications:
-                1. Zone: us-west1-b
-                2. Machine type: n1-standard-4
-                3. CPUs: 4 vCPUs (unknown CPU platform)
-                4. CPU RAM: 15 GB
-                5. GPU: 1 Nvidia Tesla K80 (half board)
-                6. GPU RAM: 12 GB
-                7. HDD: 1 TB persistent storage
-                8. OS: Ubuntu 16.04.3 LTS
-                9. Nvidia CUDA: CUDA 8.0.61
-                10. Nvidia cuDNN: cuDNN 6.0.21
-                11. Google Tensorflow: TensorFlow 1.3.0
-                12. Keras: Keras 2.0.8
-                13. OpenCV: OpenCV 3.3.0
-                14. Jupyter Notebook: Jupyter Notebook 5.1.0
-                On Google Cloud Platform, Tesla P100 GPUs cost 3 times Tesla K80 GPUs. However, while using Tesla P100 GPUs, we noticed just 30-40% performance increase over Tesla K89 GPUs. Hence, we used K80 GPUs for bulk of our training and testing activities as they had a better performance/price ratio.
-                We used Mask-RCNN pretrained on COCO dataset [30].
-                We observed that the Mask-RCNN requires a large amount of memory and hence we could only train 2 images in a batch per GPU in the available environment reliably without experiencing memory errors. This small batch size was equivalent to stochastic training instead of a mini-batch training. To maintain the network stability we were forced to use a lower learning rate of 0.002 which we had reduce in later epochs to 0.0002.</p>
+            <p>We used Google Cloud Platform virtual machines for training and testing. Our virtual machine environment had following specifications:</p>
+                <ol type='1'>
+                <li>Zone: us-west1-b </li> 
+                <li>Machine type: n1-standard-4</li>
+                <li>CPUs: 4 vCPUs (unknown CPU platform)</li>
+                <li>CPU RAM: 15 GB</li>
+                <li>GPU: 1 Nvidia Tesla K80 (half board)</li>
+                <li>GPU RAM: 12 GB</li>
+                <li>HDD: 1 TB persistent storage</li>
+                <li>8. OS: Ubuntu 16.04.3 LTS</li>
+                <li>9. Nvidia CUDA: CUDA 8.0.61</li>
+                <li>10. Nvidia cuDNN: cuDNN 6.0.21</li>
+                <li>11. Google Tensorflow: TensorFlow 1.3.0</li>
+                <li>12. Keras: Keras 2.0.8</li>
+                <li>13. OpenCV: OpenCV 3.3.0</li>
+                <li>14. Jupyter Notebook: Jupyter Notebook 5.1.0</li></ol>
+                <p>On Google Cloud Platform, Tesla P100 GPUs cost 3 times Tesla K80 GPUs. However, while using Tesla P100 GPUs, we noticed just 30-40% performance increase over Tesla K89 GPUs. Hence, we used K80 GPUs for bulk of our training and testing activities as they had a better performance/price ratio.
+                We used Mask-RCNN pretrained on COCO dataset [30].</p>
+                <p>We observed that the Mask-RCNN requires a large amount of memory and hence we could only train 2 images in a batch per GPU in the available environment reliably without experiencing memory errors. This small batch size was equivalent to stochastic training instead of a mini-batch training. To maintain the network stability we were forced to use a lower learning rate of 0.002 which we had reduce in later epochs to 0.0002.</p>
 
             <h3>Postprocessing and Final Predictions</h3>
             <p>Text</p>
