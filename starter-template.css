@@ -1,4 +1,5 @@
 body {
+  font-size: 18px;
   padding-bottom: 100px
 }
 
@@ -94,15 +95,15 @@ body {
 }
 
 /*a:link, a:visited{*/
-#demo  {
+/*#demo  {
     color: (internal value);
     font-size: 150%;
-}
+}*/
 
 #myCanvas {
   max-width: 50%;
   height: auto;
- 
+
 }
 
 #play {
