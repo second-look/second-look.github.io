@@ -269,9 +269,9 @@
             <br>
 
             <h3>Network Architecture</h3>
-            <p>We derived our Mask R-CNN architecture based on the Functional Pyramid Network (FPN) [27] variant of Mask R- CNN.</p>
-            <p>Feature Pyramid Network extracts features at different scales based on their levels in the feature pyramid. The ResNet [28] – FPN [27] backbone provides good accuracy without sacrificing speed.</p>
-            <p>Our Mask R-CNN architecture leverages and extends the framework of Abdullah et al. at Matterport [29]. Our Mask R- CNN model has – 63,744,170 total parameters, 63,632,682 trainable parameters and 111,488 non-trainable parameters.</p>
+            <p>We derived our Mask R-CNN architecture based on the <a href="https://arxiv.org/abs/1612.03144" target="_blank"> Functional Pyramid Network (FPN)</a> variant of Mask R- CNN.</p>
+            <p>Feature Pyramid Network extracts features at different scales based on their levels in the feature pyramid. <a href="https://arxiv.org/abs/1512.03385" target="_blank">The ResNet</a> – <a href="https://arxiv.org/abs/1612.03144" target="_blank">FPN</a> backbone provides good accuracy without sacrificing speed.</p>
+            <p>Our Mask R-CNN architecture leverages and extends the framework of Abdullah et al. at <a href="https://github.com/matterport/Mask_RCNN" target="_blank">Matterport</a>. Our Mask R- CNN model has – 63,744,170 total parameters, 63,632,682 trainable parameters and 111,488 non-trainable parameters.</p>
             <br>
 
             <h3>Training & Testing</h3>
@@ -292,7 +292,7 @@
                 <li>OpenCV: OpenCV 3.3.0</li>
                 <li>Jupyter Notebook: Jupyter Notebook 5.1.0</li></ol>
                 <p>On Google Cloud Platform, Tesla P100 GPUs cost 3 times Tesla K80 GPUs. However, while using Tesla P100 GPUs, we noticed just 30-40% performance increase over Tesla K89 GPUs. Hence, we used K80 GPUs for bulk of our training and testing activities as they had a better performance/price ratio.
-                We used Mask-RCNN pretrained on COCO dataset [30].</p>
+                We used Mask-RCNN pretrained on <a href="http://cocodataset.org/#home" target="_blank">COCO dataset</a>.</p>
                 <p>We observed that the Mask-RCNN requires a large amount of memory and hence we could only train 2 images in a batch per GPU in the available environment reliably without experiencing memory errors. This small batch size was equivalent to stochastic training instead of a mini-batch training. To maintain the network stability we were forced to use a lower learning rate of 0.002 which we had reduce in later epochs to 0.0002.</p>
 
         </div>
